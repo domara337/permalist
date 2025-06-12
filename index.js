@@ -17,6 +17,9 @@ port:5432,
 
 db.connect();
 
+const days=["Sunday" , "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const today=new Date();
+const dayName=days[today.getDay()]
 
 let items = [
   { id: 1, title: "Buy milk" },
@@ -30,7 +33,7 @@ app.get("/",async (req, res) => {
   items=result.rows;
 
   res.render("index.ejs", {
-    listTitle: "Today",
+    listTitle: dayName,
     listItems: items,
   });
 });
